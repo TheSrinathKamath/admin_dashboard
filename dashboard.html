@@ -1,0 +1,378 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<link rel="icon" type="image/png" href="assets/img/favicon.ico">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+	<title>Dashboard - HELLOmywork Admin</title>
+
+	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+    <meta name="viewport" content="width=device-width" />
+
+
+    <!-- Bootstrap core CSS     -->
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
+
+    <!-- Animation library for notifications   -->
+    <link href="assets/css/animate.min.css" rel="stylesheet"/>
+
+    <!--  Light Bootstrap Table core CSS    -->
+    <link href="assets/css/light-bootstrap-dashboard.css?v=1.4.0" rel="stylesheet"/>
+
+
+    <!--  CSS for Demo Purpose, don't include it in your project     -->
+    <link href="assets/css/demo.css" rel="stylesheet" />
+
+
+    <!--     Fonts and icons     -->
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300' rel='stylesheet' type='text/css'>
+    <link href="assets/css/pe-icon-7-stroke.css" rel="stylesheet" />
+    <script src="assets/js/scripts.js" type="text/javascript"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+</head>
+<body>
+<div class="wrapper">
+    <div class="sidebar" data-color="purple" data-image="assets/img/sidebar-5.jpg" w3-include-html="sidenav.html">
+    </div>
+
+    <div class="main-panel">
+        <nav class="navbar navbar-default navbar-fixed" w3-include-html="header.html">
+            
+        </nav>
+
+
+        <div class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="card" style="width: 100%;">
+
+                            <div class="header">
+                                <h4 class="title">Conversion Ratio</h4>
+                                <p class="category">Overall Performance</p>
+                            </div>
+                            <div class="content">
+                                <div id="dvChartDistribution" style="height: 280px;"></div>
+
+                                <div class="footer">
+                                    <div class="legend">
+                                        <i class="fa fa-circle text-info"></i> Leads
+                                        <i class="fa fa-circle text-danger"></i> Prospects
+                                        <i class="fa fa-circle text-success"></i> Conversions
+                                    </div>
+                                    <hr>
+                                    <div class="stats">
+                                        <i class="fa fa-clock-o"></i> Campaign sent 2 days ago
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-8">
+                        <div class="card">
+                            <div class="header">
+                                <h4 class="title">Weekly Targets</h4>
+                                <p class="category" id="pWeekIdentifier">Your performance</p>
+                            </div>
+                            <div class="content">
+                                <div class="row">
+                                    <div class="col-lg-4">
+                                        <div style="width: 100%; font-weight: bold;" align="center">Leads</div>
+                                        <div style="width: 100%; position: relative;">
+                                            <div id="donut_single1" style="height: 200px; width: 100%;"></div>
+                                            <div style="position: absolute; top: 47%; width: 100%; font-weight: bold" align="center" id="dvLeadsCount"></div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <div style="width: 100%; font-weight: bold;" align="center">Prospective</div>
+                                        <div style="width: 100%; position: relative;">
+                                            <div id="donut_single2" style="height: 200px; width: 100%;"></div>
+                                            <div style="position: absolute; top: 47%; width: 100%; font-weight: bold" align="center" id="dvProspectsCount"></div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <div style="width: 100%; font-weight: bold;" align="center">Conversions</div>
+                                        <div style="width: 100%; position: relative;">
+                                            <div id="donut_single3" style="height: 200px; width: 100%;"></div>
+                                            <div style="position: absolute; top: 47%; width: 100%; font-weight: bold" align="center" id="dvConvCount"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="legend">
+                                    <i class="fa fa-circle text-completed"></i> Completed
+                                    <i class="fa fa-circle text-alert-remaining"></i> Remaining
+                                </div>
+                                <div style="padding-top: 8px;">
+                                    <h5>Notes</h5>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-12" id="dvNotes" style="color:#999999;">
+                                        No new notes for this week.
+                                    </div>
+                                </div>
+                                <div class="footer">
+                                    <hr>
+                                    <div class="stats">
+                                        <i class="fa fa-history"></i> Updated 2 days ago
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="card ">
+                            <div class="header">
+                                <h4 class="title">Top Performers</h4>
+                                <p class="category">Weekly top performers</p>
+                            </div>
+                            <div class="content">
+                                <div class="content table-responsive table-full-width" id="conversionsTable">
+                                </div>
+
+                                <div class="footer">
+                                    <hr>
+                                    <div class="stats">
+                                        <i class="fa fa-check"></i> Data information certified
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="card ">
+                            <div class="header">
+                                <h4 class="title">Contests & Announcements</h4>
+                                <p class="category">Updated Everyday</p>
+                            </div>
+                            <div class="content">
+                                <div class="table-full-width"  id="notifTable"></div>
+
+                                <div class="footer">
+                                    <hr>
+                                    <div class="stats">
+                                        <i class="fa fa-history"></i> Updated 3 minutes ago
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <footer class="footer" w3-include-html="footer.html">    
+        </footer>
+
+    </div>
+</div>
+
+
+</body>
+
+    <!--   Core JS Files   -->
+    <script src="assets/js/jquery.3.2.1.min.js" type="text/javascript"></script>
+	<script src="assets/js/bootstrap.min.js" type="text/javascript"></script>
+
+	<!--  Charts Plugin -->
+	<script src="assets/js/chartist.min.js"></script>
+
+    <!--  Notifications Plugin    -->
+    <script src="assets/js/bootstrap-notify.js"></script>
+
+    <!--  Google Maps Plugin    -->
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
+
+    <!-- Light Bootstrap Table Core javascript and methods for Demo purpose -->
+	<script src="assets/js/light-bootstrap-dashboard.js?v=1.4.0"></script>
+
+	<!-- Light Bootstrap Table DEMO methods, don't include it in your project! -->
+	<script src="assets/js/demo.js"></script>
+
+	<script type="text/javascript">
+	    var count = 1;
+	    var userLive = {};
+        window.onload = function(){
+           setTimeout(function(){
+               activateSideNav();
+           }, 100);
+           setTimeout(function(){
+               loadProfile();
+           }, 100);
+        };
+        includeHTML();
+        getData();
+        // google.charts.load('current', {'packages':['corechart']});
+        // google.charts.setOnLoadCallback(drawChart);
+
+        function drawChart() {
+            var dataPros = google.visualization.arrayToDataTable([
+            ['Effort', 'Amount given'],
+            ['Completed',     parseInt(userLive.finalPros)],
+            ['Remaining',     Math.abs(parseInt(userLive.targetPros)-parseInt(userLive.finalPros))],
+            ]);
+            var dataLeads = google.visualization.arrayToDataTable([
+            ['Effort', 'Amount given'],
+            ['Completed',     parseInt(userLive.finalLeads)],
+            ['Remaining',     Math.abs(parseInt(userLive.targetLeads)-parseInt(userLive.finalLeads))],
+            ]);
+            var dataConversions = google.visualization.arrayToDataTable([
+            ['Effort', 'Amount given'],
+            ['Completed',     parseInt(userLive.conversions)],
+            ['Remaining',     Math.abs(parseInt(userLive.targetConversions)-parseInt(userLive.conversions))],
+            ]);
+            var dataTotal = google.visualization.arrayToDataTable([
+            ['Effort', 'Amount given'],
+            ['Leads',     parseInt(userLive.finalLeads)],
+            ['Prospects',     parseInt(userLive.finalPros)],
+            ['Conversions',     parseInt(userLive.conversions)]
+            ]);
+            var optionsHollow = {
+            pieHole: 0.6,
+            pieSliceTextStyle: {
+                color: 'transparent',
+            },
+            legend: 'none'
+            };
+
+            var optionsPie = {
+                legend: 'none',
+                colors: ['#1DC7EA', '#FF9500', '#87CB16']
+            }
+
+            var chart = new google.visualization.PieChart(document.getElementById('dvChartDistribution'));
+            chart.draw(dataTotal, optionsPie);
+            var chart = new google.visualization.PieChart(document.getElementById('donut_single1'));
+            chart.draw(dataLeads, optionsHollow);
+            var chart = new google.visualization.PieChart(document.getElementById('donut_single2'));
+            chart.draw(dataPros, optionsHollow);
+            var chart = new google.visualization.PieChart(document.getElementById('donut_single3'));
+            chart.draw(dataConversions, optionsHollow);
+            document.getElementById("dvProspectsCount").innerHTML = userLive.finalPros+"/"+userLive.targetPros;
+            document.getElementById("dvLeadsCount").innerHTML = userLive.finalLeads+"/"+userLive.targetLeads;
+            document.getElementById("dvConvCount").innerHTML = userLive.conversions+"/"+userLive.targetConversions;
+        }
+        $(document).ready(function(){
+            if(!checkCookie("empId")){
+                cancelFunc(-1);
+            }
+        // 	demo.initChartist();
+        	$.notify({
+            	icon: 'pe-7s-gift',
+            	message: "Welcome to <b>HELLOmywork Admin</b> - Manage your tasks here."
+
+            },{
+                type: 'info',
+                timer: 4000
+            });
+
+    	});
+    	function getData(){
+    	    $.ajax({
+                type: 'GET',
+                dataType:'json',
+                url: 'assets/php/getNotifications.php', 
+                success: function(responseData) {
+                    if(responseData.data.success == "successful"){
+                        var response = responseData.data.result;
+                        var tabHeader = "<table class='table'><tbody>";
+                        var tabCategories = tabHeader;
+                        response.forEach(element => {
+                            tabCategories = tabCategories + buildHtml("notifTable", element);
+                        });
+                        tabCategories = tabCategories + "</tbody></table>";
+                        document.getElementById("notifTable").innerHTML = tabCategories;
+                    }else{
+                        demo.showNotification('top','center', 'Nothing to display', 4);
+                        // window.location = window.location.origin;
+                    }
+                },
+                error: function(XMLHttpRequest, textStatus, errorThrown) {
+                    demo.showNotification('top','center', 'Something went wrong', 4);
+                    // window.location = window.location.origin;
+                }
+            });
+    	    $.ajax({
+                type: 'GET',
+                dataType:'json',
+                url: 'assets/php/getConversions.php', 
+                success: function(responseData) {
+                    if(responseData.data.success == "successful"){
+                        var response = responseData.data.result;
+                        var tabHeader = '<table class="table table-hover table-striped"><thead><th>Sl No</th><th>Name</th><th>Conversions</th></thead><tbody>';
+                        var tabCategories = tabHeader;
+                        response.forEach(element => {
+                            tabCategories = tabCategories + buildHtml("conversionsTable", element);
+                        });
+                        tabCategories = tabCategories + "</tbody></table>";
+                        document.getElementById("conversionsTable").innerHTML = tabCategories;
+                    }else{
+                        demo.showNotification('top','center', 'Nothing to display', 4);
+                        // window.location = window.location.origin;
+                    }
+                },
+                error: function(XMLHttpRequest, textStatus, errorThrown) {
+                    demo.showNotification('top','center', 'Something went wrong', 4);
+                    // window.location = window.location.origin;
+                }
+            });
+    	    $.ajax({
+                type: 'POST',
+                dataType:'json',
+                data:({userId:getCookie("empId")}),
+                url: 'assets/php/getPieData.php', 
+                success: function(responseData) {
+                    if(responseData.data.success == "successful"){
+                        var response = responseData.data.result;
+                        userLive = response[0];
+                        google.charts.load('current', {'packages':['corechart']});
+                        google.charts.setOnLoadCallback(drawChart);
+                        document.getElementById("dvNotes").innerHTML = response[0].notes;
+                    }else{
+                        demo.showNotification('top','center', 'Nothing to display', 4);
+                        // window.location = window.location.origin;
+                    }
+                },
+                error: function(XMLHttpRequest, textStatus, errorThrown) {
+                    demo.showNotification('top','center', 'Something went wrong', 4);
+                    // window.location = window.location.origin;
+                }
+            });
+            
+    	}
+    	
+    	function buildHtml(template, data){
+            var htmlString = "";
+            var pageName = "'notifications'";
+            switch(template){
+                
+                case "notifTable":
+                    htmlString = '<tr style="cursor:pointer;" onclick="expandNews(&quot;' + data.id + '&quot;)"><td><div style="color:red;"><b>' + data.headline + '</b><div class="category" style="display:none;font-style:italic;" id="'+data.id+'">'+data.content+'</div></div></td></tr>';
+                break;
+                case "conversionsTable":
+                    htmlString = "<tr><td>" + count + "</td><td>" + data.userName + "</td><td>" + data.conversions + "</td></tr>";
+                    count++;
+                    break;
+            }
+            return htmlString;
+        }
+        function expandNews(id){
+            var toggle = document.getElementById(id).style.display;
+            if(toggle == "block"){
+                document.getElementById(id).style.display = "none";
+            } else {
+                document.getElementById(id).style.display = "block";
+            }
+        }
+	</script>
+
+</html>

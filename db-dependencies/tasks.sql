@@ -1,0 +1,82 @@
+-- phpMyAdmin SQL Dump
+-- version 4.8.5
+-- https://www.phpmyadmin.net/
+--
+-- Host: 127.0.0.1:3306
+-- Generation Time: Apr 11, 2019 at 12:59 PM
+-- Server version: 10.2.17-MariaDB
+-- PHP Version: 7.2.10
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Database: `u694003942_hmw`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tasks`
+--
+
+CREATE TABLE `tasks` (
+  `ID` int(11) NOT NULL,
+  `USER_ID` int(11) NOT NULL,
+  `PROSPECT_TARGET` int(11) NOT NULL,
+  `PROSPECT_FINAL` int(11) NOT NULL,
+  `LEADS_TARGET` int(11) NOT NULL,
+  `LEADS_FINAL` int(11) NOT NULL,
+  `DATE_START` date NOT NULL,
+  `DATE_END` date NOT NULL,
+  `DATE_MODIFIED` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `CONVERSIONS` int(11) NOT NULL,
+  `CONVERSIONS_TARGET` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tasks`
+--
+
+INSERT INTO `tasks` (`ID`, `USER_ID`, `PROSPECT_TARGET`, `PROSPECT_FINAL`, `LEADS_TARGET`, `LEADS_FINAL`, `DATE_START`, `DATE_END`, `DATE_MODIFIED`, `CONVERSIONS`, `CONVERSIONS_TARGET`) VALUES
+(14, 1, 12, 9, 23, 2, '2019-04-02', '2019-04-07', '2019-04-11 12:48:11', 10, 250),
+(19, 3, 200, 5, 100, 21, '2019-04-06', '2019-04-10', '2019-04-11 12:48:11', 20, 205),
+(21, 2, 50, 25, 60, 3, '2019-04-01', '2019-04-01', '2019-04-11 12:48:11', 7, 25),
+(27, 1, 12, 0, 12, 1, '2019-04-07', '2019-04-30', '2019-04-11 12:48:11', 0, 0),
+(30, 24, 100, 0, 150, 1, '2019-04-08', '2019-04-30', '2019-04-11 12:48:11', 0, 200),
+(31, 2, 12, 0, 150, 1, '2019-04-02', '2019-04-07', '2019-04-11 12:48:11', 0, 250),
+(32, 25, 200, 0, 200, 1, '2019-04-01', '2019-04-08', '2019-04-11 12:48:11', 0, 200),
+(33, 4, 320, 0, 140, 1, '2019-04-02', '2019-04-10', '2019-04-11 12:48:11', 0, 100);
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `tasks`
+--
+ALTER TABLE `tasks`
+  ADD PRIMARY KEY (`ID`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `tasks`
+--
+ALTER TABLE `tasks`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
